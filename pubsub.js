@@ -11,6 +11,15 @@ PubSub.prototype = {
         this._events[event].push(callback);
     },
 
+    once: function (event, callback) {
+        var cb = (function () {
+            callback.apply(undefined, arguments);
+            this.off(event, cb);
+        }).bind(this);
+
+        this.on(event, cb);
+    },
+
     off: function (event, callback) {
         if (this._events[event]) {
             var index = this._events[event].indexOf(callback);
