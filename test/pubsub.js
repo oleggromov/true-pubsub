@@ -7,16 +7,19 @@ describe('PubSub', function () {
     var cbTest;
     var cbTest2;
     var cbTest3;
+    var cbTest4;
 
     beforeEach(function () {
         pubsub = new PubSub();
         cbTest = sinon.spy();
         cbTest2 = sinon.spy();
         cbTest3 = sinon.spy();
+        cbTest4 = sinon.spy();
 
         pubsub.on('test', cbTest);
         pubsub.on('test', cbTest3);
         pubsub.once('test-2', cbTest2);
+        pubsub.once('test-2', cbTest4);
     });
 
     it('calls callback only once', function () {
@@ -55,5 +58,11 @@ describe('PubSub', function () {
     it('passes arguments to the `once` callback correctly', function () {
         pubsub.emit('test-2', 1);
         expect(cbTest2.getCall(0).args).to.deep.equal([1]);
+    });
+
+    it('handles length change of callbacks array during emit loop (caused by presence of `once` calls)', function () {
+        pubsub.emit('test-2');
+        expect(cbTest2.callCount).to.equal(1);
+        expect(cbTest4.callCount).to.equal(1);
     });
 });
