@@ -41,4 +41,4 @@ PubSub.prototype = {
     }
 };
 
-if (module) module.exports = PubSub;
+module.exports = PubSub;
