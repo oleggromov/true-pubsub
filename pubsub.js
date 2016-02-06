@@ -25,7 +25,7 @@ PubSub.prototype = {
             var index = this._events[event].indexOf(callback);
 
             if (index !== -1) {
-                this._events[event].splice(index);
+                this._events[event].splice(index, 1);
             }
         }
     },
