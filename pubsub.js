@@ -23,10 +23,7 @@ PubSub.prototype = {
     off: function (event, callback) {
         if (this._events[event]) {
             var index = this._events[event].indexOf(callback);
-
-            if (index !== -1) {
-                this._events[event].splice(index, 1);
-            }
+            this._events[event][index] = undefined;
         }
     },
 
@@ -35,7 +32,9 @@ PubSub.prototype = {
 
         if (this._events[event]) {
             this._events[event].forEach(function (callback) {
-                callback.apply(undefined, args);
+                if (typeof callback === 'function') {
+                    callback.apply(undefined, args);
+                }
             });
         }
     }
