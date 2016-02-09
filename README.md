@@ -9,4 +9,3 @@ The simpliest possible PubSub module. Supports:
 ## TODO
 * Throw clear errors in unexpected cases
 * ~~Think out a way to distinguish methods of different instances of one class passed as arguments~~. There's no need of doing that. If the method is passed to the `on` as is, it should be called in `undefined` context (which doesn't make any sence), but once it's binded to it's master object (using `bind` or `apply`) it becomes another function and the implicit comparison made inside of `Array.prototype.indexOf` evaluates them as different objects.
-* Fix the splice error in the `emit` array bypassing.
