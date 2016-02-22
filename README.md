@@ -129,7 +129,20 @@ listener 1, 1, 5
 listener 2, 1
 ```
 
+## Testing
+Run sequentially `npm install` and `npm test` or `mocha` in project's directory. Yor need [mocha](http://mochajs.org/) to be installed on your system globally.
+
 ## TODO
 * Throw clear errors in unexpected cases
 * ~~Think out a way to distinguish methods of different instances of one class passed as arguments~~. There's no need of doing that. If the method is passed to the `on` as is, it should be called in `undefined` context (which doesn't make any sence), but once it's binded to it's master object (using `bind` or `apply`) it becomes another function and the implicit comparison made inside of `Array.prototype.indexOf` evaluates them as different objects.
 * Find an appropriate type of exporting in different environments (node, require etc.)
+
+## License
+
+Copyright (c) 2016 Oleg Gromov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
