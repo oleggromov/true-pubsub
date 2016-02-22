@@ -5,5 +5,28 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "sinon": "^1.17.3"
-  }
+  },
+  "name": "true-pubsub",
+  "description": "The simpliest possible minimalistic PubSub library without any dependencies at all (no jQuery or other libs), dependent only on ES5 support.",
+  "version": "1.0.0",
+  "main": "pubsub.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oleggromov/true-pubsub.git"
+  },
+  "keywords": [
+    "pubsub",
+    "decouple",
+    "modules"
+  ],
+  "author": "Oleg Gromov <mail@oleggromov.com> (http://oleggromov.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oleggromov/true-pubsub/issues"
+  },
+  "homepage": "https://github.com/oleggromov/true-pubsub#readme"
 }
