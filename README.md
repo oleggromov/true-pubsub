@@ -1,5 +1,5 @@
 # True PubSub minimalistic library
-The simpliest possible minimalistic PubSub library without any dependencies at all (no jQuery or other libs), dependent only on [ES5 support](http://caniuse.com/#search=es5).
+The simpliest possible minimalistic PubSub library without any dependencies at all (no jQuery or other libs), dependent only on EcmaScript 3 support which is de-facto standard for almost any browser that's being still alive.
 
 The [interface is described below](#interface).
 
