@@ -23,23 +23,27 @@ PubSub.prototype = {
     },
 
     off: function (event, callback) {
-        if (this._events[event]) {
-            for (var i = 0, len = this._events[event].length; i < len; i++) {
-                if (this._events[event][i] === callback) {
-                    this._events[event][i] = undefined;
-                }
+        this._forEachListener(event, function (listener, index) {
+            if (listener === callback) {
+                this._events[event][index] = undefined;
             }
-        }
+        });
     },
 
     emit: function (event) {
         var args = Array.prototype.slice.call(arguments, 1);
 
+        this._forEachListener(event, function (listener) {
+            if (typeof listener === 'function') {
+                listener.apply(undefined, args);
+            }
+        });
+    },
+
+    _forEachListener: function (event, callback) {
         if (this._events[event]) {
             for (var i = 0, len = this._events[event].length; i < len; i++) {
-                if (typeof this._events[event][i] === 'function') {
-                    this._events[event][i].apply(undefined, args);
-                }
+                callback.call(this, this._events[event][i], i);
             }
         }
     }
