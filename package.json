@@ -8,7 +8,7 @@
   },
   "name": "true-pubsub",
   "description": "The simpliest possible minimalistic PubSub library without any dependencies at all (no jQuery or other libs), dependent only on EcmaScript 3 support.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "pubsub.js",
   "directories": {
     "test": "test"

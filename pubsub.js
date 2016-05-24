@@ -24,8 +24,11 @@ PubSub.prototype = {
 
     off: function (event, callback) {
         if (this._events[event]) {
-            var index = this._events[event].indexOf(callback);
-            this._events[event][index] = undefined;
+            for (var i = 0, len = this._events[event].length; i < len; i++) {
+                if (this._events[event][i] === callback) {
+                    this._events[event][i] = undefined;
+                }
+            }
         }
     },
 
@@ -33,11 +36,11 @@ PubSub.prototype = {
         var args = Array.prototype.slice.call(arguments, 1);
 
         if (this._events[event]) {
-            this._events[event].forEach(function (callback) {
-                if (typeof callback === 'function') {
-                    callback.apply(undefined, args);
+            for (var i = 0, len = this._events[event].length; i < len; i++) {
+                if (typeof this._events[event][i] === 'function') {
+                    this._events[event][i].apply(undefined, args);
                 }
-            });
+            }
         }
     }
 };
