@@ -12,10 +12,12 @@ PubSub.prototype = {
     },
 
     once: function (event, callback) {
-        var cb = (function () {
+        var ctx = this;
+
+        var cb = function () {
             callback.apply(undefined, arguments);
-            this.off(event, cb);
-        }).bind(this);
+            ctx.off(event, cb);
+        };
 
         this.on(event, cb);
     },
